@@ -13,9 +13,9 @@ namespace Desafio1.Controllers
     {
         private static List<Delivery> Deliveries(){
             return new List<Delivery>{
-                new Delivery{Id = 1, codeDelivery = "123", DateDelivery = new DateTime(2022, 10, 19)},
-                new Delivery{Id = 2, codeDelivery = "456", DateDelivery = new DateTime(2022, 09, 20)},
-                new Delivery{Id = 3, codeDelivery = "789", DateDelivery = new DateTime(2022, 05, 01)},
+                new Delivery{Id = 1, codeDelivery = "123", DateDelivery = new DateTime(2022, 10, 20)},
+                new Delivery{Id = 2, codeDelivery = "456", DateDelivery = new DateTime(2022, 10, 20)},
+                new Delivery{Id = 3, codeDelivery = "789", DateDelivery = new DateTime(2022, 10, 20)},
             };
         }
 

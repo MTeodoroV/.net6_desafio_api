@@ -9,6 +9,6 @@ namespace Desafio2.Models
     public class Collaborators
     {
         [Column("nome")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

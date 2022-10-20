@@ -9,7 +9,7 @@ namespace Desafio1.Models
     {
         public int Id { get; set; }
 
-        public string codeDelivery { get; set; }
+        public string? codeDelivery { get; set; }
 
         public DateTime DateDelivery { get; set; }
     }

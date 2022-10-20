@@ -98,6 +98,7 @@ namespace AddCollaborators
                         Console.WriteLine("=========================================\n");
                         Console.WriteLine("Deseja continuar? [sim/nao]");
                         choice = Console.ReadLine();
+                        Console.WriteLine("\n");
 
                     } while (choice == "sim");
                 }
