@@ -12,48 +12,36 @@ namespace Desafio2.Controllers
     public class CollaboratorController
     {
 
-        private static List<Collaborators> Deliveries(){
+        public static List<Collaborators> Collaborators()
+        {
             return new List<Collaborators>{
-                new Collaborators{Id = 1, Name = "123"},
-                new Collaborators{Id = 2, Name = "456"},
-                new Collaborators{Id = 3, Name = "789"},
-                new Collaborators{Id = 4, Name = "789"},
-                new Collaborators{Id = 5, Name = "789"},
-                new Collaborators{Id = 6, Name = "789"},
-                new Collaborators{Id = 7, Name = "789"},
-                new Collaborators{Id = 8, Name = "789"},
-                new Collaborators{Id = 9, Name = "789"},
-                new Collaborators{Id = 10, Name = "789"},
+                new Collaborators{Name = "Thomas A. Anderson"},
+                new Collaborators{Name = "Dio Brando"},
+                new Collaborators{Name = "Luke Skywalker"},
+                new Collaborators{Name = "Frodo Baggins"},
+                new Collaborators{Name = "Trinity"},
+                new Collaborators{Name = "Leia Organa"},
+                new Collaborators{Name = "Galadriel"},
+                new Collaborators{Name = "Morpheus"},
+                new Collaborators{Name = "James Bond"},
+                new Collaborators{Name = "Sauron"},
             };
+        }
 
-        // private readonly Contexto _context;
-
-        // public CollaboratorController(Contexto context)
-        // {
-        //     _context = context;
-        // }
-
-
-        // public async Task<IActionResult> listar()
-        //     {
-        //         return View(await _context.Produto.ToListAsync());
-        //     }
-
-
-        // POST: Produtos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // public async Task<IActionResult> Insert(Delivery delivery)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         _context.Add(delivery);
-        //         await _context.SaveChangesAsync();
-        //         return _context;
-        //     }
-        //     return View(delivery);
-        // }
+        public static string listar()
+        {
+            foreach (Collaborators item in Collaborators())
+            {
+                if (item.Name == null)
+                {
+                    Console.WriteLine("Erro ao tentar buscar os nomes na lista");
+                }
+                else
+                {
+                    Console.WriteLine(item.Name);
+                }
+            }
+            return "";
         }
     }
 }

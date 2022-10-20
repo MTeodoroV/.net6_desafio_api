@@ -10,30 +10,69 @@ namespace Desafio2.Config
 {
     public class Connection
     {
-        static void Main(string[] args)
+        SqlConnection con = new SqlConnection();
+
+        public SqlConnection conectar()
         {
+            // con.ConnectionString = "Server=tcp:konia-desafio.database.windows.net,1433;Initial Catalog=konia-desafio;Persist Security Info=False;User ID=koniaDesafio;Password=KoniaKonia12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            try
+            builder.DataSource = "konia-desafio.database.windows.net";
+            builder.UserID = "koniaDesafio";
+            builder.Password = "KoniaKonia12";
+            builder.InitialCatalog = "konia-desafio";
+
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-
-                builder.DataSource = "konia-desafio.database.windows.net";
-                builder.UserID = "koniaDesafio";
-                builder.Password = "KoniaKonia12";
-                builder.InitialCatalog = "konia-desafio";
-
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                if (connection.State == System.Data.ConnectionState.Closed)
                 {
                     Console.WriteLine("=========================================\n");
-                    connection.Open();
                     Console.WriteLine("Conectado ao banco de dados\n");
                     Console.WriteLine("=========================================\n");
+                    connection.Open();
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro ao tentar conectar ao banco de dados");
+                return connection;
             }
         }
+
+        public void teste()
+        {
+            String sql = "SELECT Id, Nome, Created_at from teste";
+
+            using (SqlCommand command = new SqlCommand(sql, conectar()))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    Console.WriteLine("Teste");
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("Id: {0}, Nome: {1}, Data de criação: {2}", reader.GetInt32(0), reader.GetString(1), reader.GetSqlDateTime(2));
+                    }
+                }
+            }
+        }
+
+        public void desconectar()
+        {
+            if (con.State == System.Data.ConnectionState.Open)
+            {
+                con.Close();
+            }
+        }
+
+        // SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+
+        // builder.DataSource = "konia-desafio.database.windows.net";
+        //             builder.UserID = "koniaDesafio";
+        //             builder.Password = "KoniaKonia12";
+        //             builder.InitialCatalog = "konia-desafio";
+
+        // using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+        // {
+        //     Console.WriteLine("=========================================\n");
+        //     Console.WriteLine("Conectado ao banco de dados\n");
+        //     Console.WriteLine("=========================================\n");
+        //     connection.Open();
+        // }
     }
 }
