@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Desafio2.Models;
 using Microsoft.Data.SqlClient;
-using Desafio2.Controllers;
 
 namespace AddCollaborators
 {
@@ -29,6 +28,7 @@ namespace AddCollaborators
                 new Collaborators{Name = "Sauron"},
             };
             }
+
 
             try
             {
@@ -58,7 +58,7 @@ namespace AddCollaborators
                                 break;
 
                             case "adicionar":
-                                String insert = @"INSERT INTO teste(Nome)Values(@NAME)";
+                                String insert = @"INSERT INTO collaborators(Nome)Values(@NAME)";
 
                                 foreach (Collaborators item in Collaborators())
                                 {
@@ -77,7 +77,7 @@ namespace AddCollaborators
                                 break;
 
                             case "listar":
-                                String list = "SELECT Id, Nome, Created_at from teste";
+                                String list = "SELECT Id, Nome, Created_at FROM collaborators";
                                 using (SqlCommand command = new SqlCommand(list, connection))
                                 {
                                     using (SqlDataReader reader = command.ExecuteReader())
